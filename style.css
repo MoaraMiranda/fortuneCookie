@@ -5,13 +5,14 @@
 }
 
 :root {
-  --primary-color-bg: #89be7c;
-  --secondary-color-bg: #d3bc4a;
-  --third-color-bg: #fdbb2d;
+  --primary-color-bg: #190361;
+  --secondary-color-bg: #4d0294;
+  --third-color-bg: #b0f;
+  --phrases-bg: #ead9f0;
   --card-bg: #fff;
   --ff-general: "DM Sans", sans-serif;
   --ff-message: "Dancing Script", cursive;
-  --fc-text: #45633e;
+  --fc-text: #341b86;
   font-size: 62.5%;
 }
 
@@ -20,16 +21,13 @@
 }
 
 body {
-  background: linear-gradient(
-    0deg,
-    var(--primary-color-bg) 24%,
-    var(--secondary-color-bg) 63%,
-    var(--third-color-bg) 100%
-  );
+  background: linear-gradient(45deg, #190361 0%, #b0f 100%);
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: gradient 10s ease infinite;
+  background-size: 200% 200%;
 }
 .page {
   display: flex;
@@ -40,28 +38,142 @@ body {
   background: var(--card-bg);
   padding: 4rem;
   border-radius: 0.6rem;
-  box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.3);
-  justify-content: center;
+  box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.8);
 }
 
 h1,
-p {
+h3,
+button {
   text-align: center;
   font-family: var(--ff-general);
   color: var(--fc-text);
 }
 
 section.card h1 {
-  margin-bottom: 1rem;
-  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
   line-height: 1.8rem;
   font-weight: 900;
 }
 
-p {
+h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  opacity: 0.8;
 }
-a img{
+
+img {
   padding: 2rem;
 }
+
+.flex-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.phrases {
+  background-color: var(--phrases-bg);
+  padding: 2rem;
+  box-shadow: 2px 2px 2px 0px rgba(85, 85, 85, 0.4);
+  max-width: 25rem;
+  display: flex;
+  margin: auto;
+  animation: message 1.5s ease;
+}
+div.phrases p {
+  font-family: var(--ff-message);
+  color: var(--fc-text);
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 2rem;
+  text-align: center;
+}
+
+section button {
+  font-size: 1.5rem;
+  padding: 1.3rem;
+  background-color: var(--phrases-bg);
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-weight: 700;
+  max-width: fit-content;
+  margin: auto;
+}
+
+/********************************
+Animations
+********************************/
+
+/* Background */
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+/* First Card */
+
+section.card img.shake:hover {
+  animation: fortune-shake 0.8s ease infinite;
+}
+
+@keyframes fortune-shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 1px, 1px);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 3px, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 2px, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+/* Second Card */
+
+button,
+.phrases {
+  transition: all 200ms ease-in;
+}
+
+div.phrases:hover {
+  scale: 1.1;
+}
+
+button:hover {
+  opacity: 0.8;
+  scale: 1.1;
+}
+
+@keyframes message {
+  0% {
+    opacity: 0;
+    transform: translateY(150px) scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
