@@ -1,8 +1,7 @@
 /*******************************
  Variables
 *******************************/
-let screen1 = document.querySelector(".screen1");
-let screen2 = document.querySelector(".screen2");
+
 let phrases = [
   "Don't hold onto things that require a tight grip.",
   "Vulnerability sounds like faith and looks like courage.",
@@ -14,29 +13,40 @@ let phrases = [
   "One bad chapter doesn't mean your story is over.",
 ];
 let arrayNumber = Math.round(Math.random() * phrases.length);
-  console.log(arrayNumber)
+let screen1 = document.querySelector(".screen1");
+let screen2 = document.querySelector(".screen2");
 /*******************************
  Events
 *******************************/
 
 openCookie.addEventListener("click", handleOpenCookie);
-newCookie.addEventListener("click", handleNewCookie)
+newCookie.addEventListener("click", handleNewCookie);
 
 /*******************************
  Functions
 *******************************/
 
-function handleOpenCookie(event) {
-  event.preventDefault();
+function arrayNumberSelection() {
+  let arrayNumberReset = Math.round(Math.random() * phrases.length);
+  arrayNumber = arrayNumberReset
+  return arrayNumber
+}
 
-  screen1.classList.add("hide");
-  screen2.classList.remove("hide");
+
+function handleOpenCookie(event) {
+  event.preventDefault()
+
+  toggleScreen()
 
   screen2.querySelector("p").innerText = phrases[arrayNumber]
 }
 
 function handleNewCookie() {
+  toggleScreen()
+  arrayNumberSelection()
+}
 
-  screen1.classList.remove("hide");
-  screen2.classList.add("hide");
+function toggleScreen() {
+  screen1.classList.toggle("hide");
+  screen2.classList.toggle("hide");
 }
