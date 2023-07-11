@@ -15,6 +15,7 @@ let phrases = [
 let arrayNumber = Math.round(Math.random() * phrases.length);
 let screen1 = document.querySelector(".screen1");
 let screen2 = document.querySelector(".screen2");
+
 /*******************************
  Events
 *******************************/
@@ -29,9 +30,9 @@ newCookie.addEventListener("click", handleNewCookie);
 function arrayNumberSelection() {
   let arrayNumberReset = Math.round(Math.random() * phrases.length);
   arrayNumber = arrayNumberReset
+  console.log(arrayNumber, "entrou aqui")
   return arrayNumber
 }
-
 
 function handleOpenCookie(event) {
   event.preventDefault()
