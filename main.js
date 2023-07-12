@@ -13,8 +13,8 @@ let phrases = [
   "One bad chapter doesn't mean your story is over.",
 ];
 let arrayNumber = Math.round(Math.random() * phrases.length);
-let screen1 = document.querySelector(".screen1");
-let screen2 = document.querySelector(".screen2");
+let closedCookie = document.querySelector(".closed-cookie");
+let openedCookie = document.querySelector(".opened-cookie");
 
 /*******************************
  Events
@@ -30,16 +30,15 @@ newCookie.addEventListener("click", handleNewCookie);
 function arrayNumberSelection() {
   let arrayNumberReset = Math.round(Math.random() * phrases.length);
   arrayNumber = arrayNumberReset
-  console.log(arrayNumber, "entrou aqui")
+
   return arrayNumber
 }
 
 function handleOpenCookie(event) {
   event.preventDefault()
-
   toggleScreen()
 
-  screen2.querySelector("p").innerText = phrases[arrayNumber]
+  openedCookie.querySelector("p").innerText = phrases[arrayNumber]
 }
 
 function handleNewCookie() {
@@ -48,6 +47,6 @@ function handleNewCookie() {
 }
 
 function toggleScreen() {
-  screen1.classList.toggle("hide");
-  screen2.classList.toggle("hide");
+  closedCookie.classList.toggle("hide");
+  openedCookie.classList.toggle("hide");
 }
